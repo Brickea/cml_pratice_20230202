@@ -1,0 +1,3 @@
+['remote "aliyun_oss"']
+    url = oss://brickea-mlops/cml_with_dvc
+    oss_endpoint = oss-cn-hangzhou.aliyuncs.com
