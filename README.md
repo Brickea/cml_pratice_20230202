@@ -1,11 +1,19 @@
-# CML - 实践
-* 目标：基于 GitAction ，通过代码提交自动训练模型，通过 CML 自动生成评估报告，并在 PR 阶段展示性能指标
-    * CML 为一个工具，用来将生成的训练结果指标同步到 Git PR 阶段，并以 comment 的形式展示
-* 承载平台：Amazon Sagemaker
-* MLOPs：CML & DVC
-* 算法：RandomForest
-* 数据集：sklearn.datasets make_classification
+# CML - Practice
 
-## Example Continuous Machine Learning project
+## CML basic use case
 
-This repository contains code and data for a simple classification problem. To get the dataset, please run `python get_data.py`.
+* Target is to get familiar with basic CML usage: Generating model training matrix in comment after executing `git push` command
+* Scope: Basic project structure of CML
+* Algorithm: `sklearn.ensemble RandomForestClassifier`
+* Dataset: `sklearn.datasets make_classification`
+
+This repository contains a sample project using [CML](https://github.com/iterative/cml). When a pull request is made in this repository, the following will occur:
+- GitHub will deploy a runner machine with a specified CML Docker environment
+- The runner will execute a workflow to train a ML model (`python train.py`)
+- A visual CML report about the model performance will be returned as a comment in the pull request
+
+The key file enabling these actions is `.github/workflows/cml.yaml`.
+
+### Secrets and environmental variables
+The only environmental variable set in `.github/workflows/cml.yaml` is `GITHUB_TOKEN`, which is configured by default in every GitHub repository. No secrets must be set by the user. 
+
