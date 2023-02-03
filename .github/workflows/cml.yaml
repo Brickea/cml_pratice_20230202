@@ -22,7 +22,7 @@ jobs:
       - name: cml
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          
+
           OSS_BUCKET: ${{ secrets.OSS_BUCKET}}
           OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID}}
           OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET}}
@@ -31,7 +31,7 @@ jobs:
           pip install -r requirements.txt
 
           # Pull dataset with DVC
-          dvc pull data
+          dvc pull data -r aliyun_oss
 
           # Reproduce pipeline if any changes detected in dependencies
           dvc repro
