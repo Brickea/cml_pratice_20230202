@@ -34,9 +34,6 @@ jobs:
           # Pull dataset with DVC
           dvc pull data -r aliyun_oss
 
-          # Reproduce pipeline if any changes detected in dependencies
-          dvc repro
-
           # Use DVC metrics diff to compare metrics to master
           git fetch --prune --unshallow
           dvc metrics diff --show-md master >> report.md
