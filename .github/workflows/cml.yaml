@@ -42,4 +42,4 @@ jobs:
           dvc plots diff --target loss.csv --show-vega cml_with_dvc > vega.json
           vl2png vega.json -s 1.3 > vega.png
           echo '![](./vega.png)' >> report.md
-          cml comment create --target=pr --publish report.md
+          cml comment create --target=pr/cml_with_dvc --publish report.md
