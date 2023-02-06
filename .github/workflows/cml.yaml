@@ -34,12 +34,12 @@ jobs:
           # Pull dataset with DVC
           dvc pull data -r aliyun_oss
 
-          # Use DVC metrics diff to compare metrics to master
+          # Use DVC metrics diff to compare metrics to cml_with_dvc
           git fetch --prune --unshallow
-          dvc metrics diff --show-md master >> report.md
+          dvc metrics diff --show-md cml_with_dvc >> report.md
 
           # Add figure to report
-          dvc plots diff --target loss.csv --show-vega master > vega.json
+          dvc plots diff --target loss.csv --show-vega cml_with_dvc > vega.json
           vl2png vega.json -s 1.3 > vega.png
           echo '![](./vega.png)' >> report.md
           cml comment create --pr --publish report.md
